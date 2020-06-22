@@ -70,11 +70,16 @@ func div(c *gin.Context) {
 	})
 }
 
-func main() {
+func setupRouter() *gin.Engine {
 	r := gin.Default()
 	r.POST("/calculator.sum", sum)
 	r.POST("/calculator.sub", sub)
 	r.POST("/calculator.mul", mul)
 	r.POST("/calculator.div", div)
-	r.Run(":8081") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	return r
+}
+
+func main() {
+	r := setupRouter()
+	r.Run(":8081")
 }
