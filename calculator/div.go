@@ -11,7 +11,7 @@ import (
 
 func Div(c *gin.Context) {
 	data := entities.Data{}
-	if err := c.ShouldBindJSON(data); err != nil {
+	if err := c.ShouldBindJSON(&data); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
